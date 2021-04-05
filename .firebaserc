@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "angular-rest-apis"
+  },
+  "targets": {
+    "angular-rest-apis": {
+      "hosting": {
+        "angular-serverside": [
+          "angular-rest-apis"
+        ]
+      }
+    }
+  }
+}
