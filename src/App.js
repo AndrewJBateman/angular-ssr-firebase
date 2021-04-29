@@ -1,12 +1,12 @@
-import React from "react";
-import kuzzle from "./services/kuzzle";
-import "./App.css";
+import React from 'react';
+import kuzzle from './services/kuzzle';
+import './App.css';
 
 const Message = function ({ message, username }) {
   return (
     <div
       className={
-        (message.username === username ? "fromMe" : "fromOthers") + "messages"
+        (message.username === username ? 'fromMe' : 'fromOthers') + 'messages'
       }
     >
       <span>
@@ -22,8 +22,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      message: "",
+      username: '',
+      message: '',
       messages: [],
       connected: false,
     };
@@ -31,9 +31,9 @@ class App extends React.Component {
 
   connect = async () => {
     await kuzzle.connect();
-    if (!(await kuzzle.index.exists("chat"))) {
-      await kuzzle.index.create("chat");
-      await kuzzle.collection.create("chat", "messages");
+    if (!(await kuzzle.index.exists('chat'))) {
+      await kuzzle.index.create('chat');
+      await kuzzle.collection.create('chat', 'messages');
     }
     await this.fetchMessages();
     await this.subscribeMessages();
@@ -41,16 +41,16 @@ class App extends React.Component {
   };
 
   fetchMessages = async () => {
-    const results = await kuzzle.document.search("chat", "messages", {
+    const results = await kuzzle.document.search('chat', 'messages', {
       sort: {
-        "_kuzzle_info.createdAt": "desc",
+        '_kuzzle_info.createdAt': 'desc',
       },
     });
     this.setState({ messages: results.hits });
   };
 
   subscribeMessages = () => {
-    return kuzzle.realtime.subscribe("chat", "messages", {}, (notification) => {
+    return kuzzle.realtime.subscribe('chat', 'messages', {}, (notification) => {
       this.setState({
         messages: [notification.result, ...this.state.messages],
       });
@@ -58,13 +58,13 @@ class App extends React.Component {
   };
 
   sendMessage = async () => {
-    if (this.state.message === "") return;
-    await kuzzle.document.create("chat", "messages", {
+    if (this.state.message === '') return;
+    await kuzzle.document.create('chat', 'messages', {
       value: this.state.message,
       username: this.state.username,
     });
     this.setState({
-      message: "",
+      message: '',
     });
   };
 
@@ -72,9 +72,9 @@ class App extends React.Component {
     return (
       <div>
         <input
-          type="text"
-          name="username"
-          placeholder="Enter your name"
+          type='text'
+          name='username'
+          placeholder='Enter your name'
           onChange={this.handleInputChange}
         />
         <button onClick={() => this.connect()}>Connect</button>
@@ -86,9 +86,9 @@ class App extends React.Component {
     return (
       <div>
         <input
-          type="text"
-          name="message"
-          placeholder="Enter your message"
+          type='text'
+          name='message'
+          placeholder='Enter your message'
           onChange={this.handleInputChange}
           value={this.state.message}
         />

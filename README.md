@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# :zap: React Kuzzle Data
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* App using React to display a simple real-time chat app front end.
+* Future: Kuzzle, a backend with ready-to-use features, is used.
 
-## Available Scripts
+*** Note: to open web links in a new window use: _ctrl+click on link_**
 
-In the project directory, you can run:
+## :page_facing_up: Table of contents
 
-### `npm start`
+* [:zap: Ionic React Firebase](#zap-ionic-react-firebase)
+  * [:page_facing_up: Table of contents](#page_facing_up-table-of-contents)
+  * [:books: General info](#books-general-info)
+  * [:camera: Screenshots](#camera-screenshots)
+  * [:signal_strength: Technologies](#signal_strength-technologies)
+  * [:floppy_disk: Setup](#floppy_disk-setup)
+  * [:computer: Code Examples](#computer-code-examples)
+  * [:cool: Features](#cool-features)
+  * [:clipboard: Status & To-Do List](#clipboard-status--to-do-list)
+  * [:clap: Inspiration](#clap-inspiration)
+  * [:file_folder: License](#file_folder-license)
+  * [:envelope: Contact](#envelope-contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## :books: General info
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* React frontend
 
-### `npm test`
+## :camera: Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Example screenshot](./img/app.png)
 
-### `npm run build`
+## :signal_strength: Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [React v17](https://reactjs.org/) JavaScript library
+* [Kuzzle-sdk v7](https://www.npmjs.com/package/kuzzle-sdk?activeTab=readme) javascript Software Dev. Kit (SDK) for Kuzzle
+* [Kourou](https://github.com/kuzzleio/kourou) CLI to manage the Kuzzle application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## :floppy_disk: Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Frontend: `npm i` to install dependencies then `npm start` to run app on port localhost:3000
+* Backend: tba
 
-### `npm run eject`
+## :computer: Code Examples
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* `App.js` function to connect to Kuzzle backend 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```typescript
+connect = async () => {
+  await kuzzle.connect();
+  if (!(await kuzzle.index.exists('chat'))) {
+    await kuzzle.index.create('chat');
+    await kuzzle.collection.create('chat', 'messages');
+  }
+  await this.fetchMessages();
+  await this.subscribeMessages();
+  this.setState({ connected: true });
+};
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## :cool: Features
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* f
 
-## Learn More
+## :clipboard: Status & To-Do List
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Status: In work. Frontend working, needs running Kuzzle backend to test
+* To-Do: Add backend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## :clap: Inspiration
 
-### Code Splitting
+* [Kuzzle documentation](https://docs.kuzzle.io/core/2/guides/introduction/what-is-kuzzle/)
+* [Youtube: Kuzzle: Creating a real-time chat with React and Kuzzle Backend](https://www.youtube.com/watch?v=YzlQ7l4r2Gk)
+* [Github Kuzzle repo](https://github.com/kuzzleio/kuzzle)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## :file_folder: License
 
-### Analyzing the Bundle Size
+* Where applicable: this project is licensed under the terms of the MIT license.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## :envelope: Contact
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Repo created by [ABateman](https://github.com/AndrewJBateman), email: gomezbateman@yahoo.com
