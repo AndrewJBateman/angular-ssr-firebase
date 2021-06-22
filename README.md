@@ -2,8 +2,12 @@
 
 * App using React to display a simple real-time chat app front end.
 * Future: Kuzzle, a backend with ready-to-use features, is used.
+* **Note:** to open web links in a new window use: _ctrl+click on link_
 
-*** Note: to open web links in a new window use: _ctrl+click on link_**
+![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/react-kuzzle-data?style=plastic)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/react-kuzzle-data?style=plastic)
+![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/react-kuzzle-data?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/react-kuzzle-data?style=plastic)
 
 ## :page_facing_up: Table of contents
 
@@ -73,7 +77,7 @@ connect = async () => {
 
 ## :file_folder: License
 
-* Where applicable: this project is licensed under the terms of the MIT license.
+* N/A
 
 ## :envelope: Contact
 
